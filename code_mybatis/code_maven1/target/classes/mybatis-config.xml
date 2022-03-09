@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="properties/db.properties">
+        <property name="username" value="root"/>
+    </properties>
+<!--    <settings>-->
+<!--        <setting name="logImpl" value="STDOUT_LOGGING"/>-->
+<!--&lt;!&ndash;        <setting name="logImpl" value="LOG4J"/>&ndash;&gt;-->
+<!--    </settings>-->
+    <typeAliases>
+        <typeAlias type="com.feng.pojo.Student" alias="student"/>
+    </typeAliases>
+<!--    下面可以配置很多的环境，只是default时development-->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+<!--        这个有很多的方法，但是我的这个文件布局就只能是这样的resource-->
+        <mapper resource="mapper/StudentMapper.xml"/>
+        <mapper class="com.feng.pojo.Student"/>
+        <mapper class="com.feng.pojo.Teacher"/>
+        <mapper resource="mapper/TeacherMapper.xml"/>
+        <mapper resource="mapper/StudentMapper1.xml"/>
+    </mappers>
+</configuration>

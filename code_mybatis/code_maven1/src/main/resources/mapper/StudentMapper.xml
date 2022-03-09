@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.feng.mapper.StudentMapper">
+    <resultMap id="Student1Map" type="com.feng.pojo.Student1">
+        <result column="pwd" property="password"/>
+    </resultMap>
+    <select id="getStudentList" resultMap="Student1Map">
+        select * from student
+--         上面的这个句子等价于select  id,name,pwd from student
+--         这里面指定sql语句
+    </select>
+    <select id="getStudentById" parameterType="String" resultType="student">
+        select * from student where name like #{value};
+    </select>
+    <update id="UpdateStudent" parameterType="com.feng.pojo.Student">
+        update student set pwd=#{pwd} where name=#{name}
+    </update>
+    <insert id="InsertStudent" parameterType="com.feng.pojo.Student">
+        insert into student(id,name,pwd) values (#{id},#{name},#{pwd})
+    </insert>
+    <delete id="DeleteStudent" parameterType="int">
+        delete from student where id=#{id};
+    </delete>
+    <insert id="addStudent" parameterType="map">
+        insert into student(id,name,pwd) values (#{StudentId},#{StudentName},#{StudentPwd});
+    </insert>
+    <select id="selectStudentByLimit" resultType="student" parameterType="map">
+        select * from student limit #{startIndex},#{pageSize};
+    </select>
+</mapper>

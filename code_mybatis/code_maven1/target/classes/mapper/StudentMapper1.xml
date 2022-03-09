@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.feng.mapper.Student1Mapper">
+    <select id="getStudent" resultType="com.feng.pojo.Student2">
+        select * from student
+    </select>
+<!--    <resultMap id="StudentTeacher" type="com.feng.pojo.Student2">-->
+<!--        <result property="id" column="id"/>-->
+<!--        <result property="name" column="name"/>-->
+<!--        <association property="teacher" column="tid" javaType="Teacher" select="getTeacher"/>-->
+<!--    </resultMap>-->
+<!--    <select id="getTeacher" resultType="com.feng.pojo.Teacher">-->
+<!--        select * from teacher;-->
+<!--    </select>-->
+</mapper>
